@@ -1,3 +1,5 @@
+package array;
+
 class Array_lect {
     /**
      * 

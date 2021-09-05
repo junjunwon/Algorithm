@@ -1,3 +1,5 @@
+package greedy;
+
 import java.util.Comparator;
 import java.util.Scanner;
 import java.util.Arrays;
