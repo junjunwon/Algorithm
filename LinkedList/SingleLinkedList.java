@@ -1,6 +1,6 @@
 package LinkedList;
 
-class LinkedList<T>{
+class SingleLinkedList<T>{
     /**
      * 데이터와 주소 : node라고 부른다.
      * 포인터 : 각 노드 안에서 다음이나 이전의 노드와의 연결 정보를 가지고 있는 공간.
@@ -95,7 +95,7 @@ public void printAll(){
     }
 }
     public static void main(String[]args){
-        LinkedList<Integer> myLinkedList = new LinkedList<Integer>();
+        SingleLinkedList<Integer> myLinkedList = new SingleLinkedList<Integer>();
         myLinkedList.addNode(1);
         myLinkedList.addNode(2);
         myLinkedList.addNode(3);
