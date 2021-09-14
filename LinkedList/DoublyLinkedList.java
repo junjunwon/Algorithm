@@ -49,14 +49,95 @@ public class DoublyLinkedList<T> {
             }
         }
     }
+
+    public T searchFromHead(T isData){
+        if(this.head == null){
+            return null;
+        } else {
+            Node<T> node = this.head;
+            while(node != null){
+                if(node.data == isData){
+                    node = new Node<T>(isData);
+                    return node.data;
+                }
+                else {
+                    node = node.next;
+                }
+            }   
+            return null;         
+        }
+    }
     
+    public T searchFromTail(T isData){
+        if(this.head == null)
+            return null;
+        else { 
+            Node<T> node = this.tail;
+            while(node != null){
+                if(node.data == isData){
+                    return node.data;
+                } else{
+                    node = node.prev;
+                }
+            }
+            return null;
+        }
+    }
+
+    public boolean insertToFront(T existData, T addData){
+        if(this.head == null){
+            this.head = new Node<T>(addData);
+            return true;
+        } else if(this.head.data == existData){
+            Node<T> newHead = new Node<T>(addData);
+            newHead.next = this.head;
+            this.head = newHead;
+            return true;
+        } else {
+            Node<T> node = this.head;
+            while(node != null){
+                if(node.data == existData){
+                    // Node<T> prevNode = new Node<T>(addData);
+                    Node<T> prevNode = node.prev;
+                    prevNode.next = new Node<T>(addData);
+                    prevNode.next.next = node;
+                    node.prev = prevNode.next;
+                    prevNode.next.prev = prevNode;
+                    return true;
+
+                    
+
+                } else{
+                    node = node.next;
+                }
+                
+            }
+            return false;
+        }
+    }
+
     public static void main(String[] args){
         DoublyLinkedList<Integer> linkedList = new DoublyLinkedList<>();
 
         linkedList.addNode(1);
         linkedList.addNode(2);
         linkedList.addNode(3);
+        linkedList.addNode(4);
+        linkedList.addNode(5);
         linkedList.printAll();
+        System.out.println("===================");
+        linkedList.insertToFront(3, 2);
+        linkedList.printAll();
+        System.out.println("===================");
+        linkedList.insertToFront(6, 2);
+        linkedList.insertToFront(1, 0);
+        linkedList.printAll();
+        System.out.println("===================");
+        linkedList.addNode(6);
+        linkedList.printAll();
+        System.out.println(linkedList.searchFromHead(1));
+        System.out.println(linkedList.searchFromTail(2));
+        
 
     }
 }
