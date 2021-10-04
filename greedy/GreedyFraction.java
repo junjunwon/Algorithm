@@ -40,7 +40,7 @@ public class GreedyFraction {
     public static void main(String[]args){
         GreedyFraction gFraction = new GreedyFraction();
         Integer[][] objectList = {{10,10},{15,12},{20,10},{25,8},{30,5}};
-        double capacity = 37;
+        double capacity = 30.0;
         gFraction.knapsackFunc(objectList, capacity);
     }
 }
