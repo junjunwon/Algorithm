@@ -20,11 +20,11 @@ class Solution {
     static int max = -9999;
     
 
-    public static long solution(String expression) {
+    public static long solve(String statement) {
         
         
         StringBuffer sb = new StringBuffer();
-        String[] temp = expression.split("");
+        String[] temp = statement.split("");
         for(int i = 0; i < temp.length; i++) {
             if(temp[i].equals("*") || temp[i].equals("+") || temp[i].equals("-")) {
                 op.add(temp[i]);
@@ -43,14 +43,14 @@ class Solution {
             System.out.println(op.get(i));
         }
     
-        perm(target, result, visited, 0, 3, 3, expression);
+        perm(target, result, visited, 0, 3, 3, statement);
         
         
         return max;
         
     }
     
-    static int calc(int[] operator, String expression) {
+    static int calc(int[] operator, String statement) {
 			System.out.println("get into calc function");
         for(int i = 0; i<3; i++) {
 
@@ -59,21 +59,21 @@ class Solution {
         return Math.abs(1);
     }
     
-    static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, int r, String expression) {
+    static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, int r, String statement) {
         if (depth == r) {
             //output 배열로 연산
             for(int i = 0; i<3; i++) {
                 System.out.print(output[i] + " ");
             }
             System.out.println();
-            max = Math.max(max, calc(output, expression));
+            max = Math.max(max, calc(output, statement));
         }
 
         for (int i=0; i<n; i++) {
             if (visited[i] != true) {
                 visited[i] = true;
                 output[depth] = arr[i];
-                perm(arr, output, visited, depth + 1, n, r, expression);       
+                perm(arr, output, visited, depth + 1, n, r, statement);       
                 output[depth] = 0; // 이 줄은 없어도 됨
                 visited[i] = false;;
             }
@@ -81,6 +81,6 @@ class Solution {
     }
 
 		public static void main(String[] args) {
-			solution("100-200*300-500+20");
+			solve("100-200*300-500+20");
 		}
 }
