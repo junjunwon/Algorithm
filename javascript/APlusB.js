@@ -1,8 +1,6 @@
 // console.log(process.cwd()) //find absolute path
 const fs = require('fs')
-let input = fs.readFileSync('/Users/wonjunho/Desktop/junho/Algorithm/Algorithm/javascript/input.txt').toString()
-
-.split(' ')
+let input = fs.readFileSync('/Users/wonjunho/Desktop/junho/Algorithm/Algorithm/javascript/input.txt').toString().split(' ')
 // console.log(input)
 
 function add(input) {

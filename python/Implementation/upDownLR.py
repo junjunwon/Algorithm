@@ -21,7 +21,66 @@ import sys
 
 n = int(input())
 data = sys.stdin.readline().rstrip()
-print(data)
+print(data[0])
 
 for i in data :
-    print(i)
+    print(i, end="")
+
+print()
+# 동 서 남북
+dx = [0, 0, 1, -1]
+dy = [1,-1, 0, 0]
+
+cur = [1,1]
+pre = [1,1]
+for i in data : 
+    pre[0] = cur[0]
+    pre[1] = cur[1]
+    print("i is ", i)
+    if i == 'R' :
+        print('R 진입!!')
+        cur[0] = cur[0] + dx[0]
+        cur[1] = cur[1] + dy[0]
+    elif i == 'L' :
+        print('L 진입!!')
+        cur[0] = cur[0] + dx[1]
+        cur[1] = cur[1] + dy[1]
+    elif i == 'D' :
+        print('D 진입!!')
+        cur[0] = cur[0] + dx[2]
+        cur[1] = cur[1] + dy[2]
+    elif i == 'U' :
+        print('U 진입!!')
+        cur[0] = cur[0] + dx[3]
+        cur[1] = cur[1] + dy[3]
+    print("pre is ", pre)
+    print("cur is ", cur)
+    if(cur[0] <=0 or cur[0] >n or cur[1] <=0 or cur[1] > n) :
+        print("범위 밖!!")
+        cur = pre
+
+print()
+print(cur[0],cur[1])
+
+# 동빈나 풀이
+n = int(input())
+x, y = 1, 1
+plans = input().split()
+
+dx = [0,0,-1,1]
+dy = [-1,1,0,0]
+move_types = ['L', 'R', 'U', 'D']
+
+for plan in plans :
+    for i in range(len(move_types)) :
+        if plan == move_types[i] :
+            nx = x + dx[i]
+            ny = y + dy[i]
+    #공간을 벗어나는 경우 무시
+    if(nx < 1 or ny < 1 or nx > n or ny > n) :
+        continue
+    x, y = nx, ny
+
+print(x, y)
+##nx, ny를 초기화하지 않아도, for문 밖에서 사용이 가능하다.
+ 
